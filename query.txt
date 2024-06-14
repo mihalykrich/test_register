@@ -1,0 +1,35 @@
+-- Create TestJigs table
+CREATE TABLE TestJigs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    customer VARCHAR(255),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Components table
+CREATE TABLE Components (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    test_jig_id INT,
+    name VARCHAR(255) NOT NULL,
+    quantity INT,
+    part_number VARCHAR(100),
+    description TEXT,
+    FOREIGN KEY (test_jig_id) REFERENCES TestJigs(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Failures table
+CREATE TABLE Failures (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    test_jig_id INT,
+    component_id INT,
+    failure_date DATE,
+    supervisor_notified BOOLEAN,
+    replacement_date DATE,
+    reason VARCHAR(255),
+    action_taken TEXT,
+    FOREIGN KEY (test_jig_id) REFERENCES TestJigs(id) ON DELETE CASCADE,
+    FOREIGN KEY (component_id) REFERENCES Components(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,9 @@
+-- Create LocationHistory table
+CREATE TABLE LocationHistory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    test_jig_id INT,
+    base_location VARCHAR(255),
+    current_location VARCHAR(255),
+    movement_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (test_jig_id) REFERENCES TestJigs(id) ON DELETE CASCADE
+);

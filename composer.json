@@ -1,0 +1,15 @@
+{
+    "require": {
+        "mpdf/mpdf": "^8.0",
+        "mpdf/qrcode": "^1.2",
+        "twbs/bootstrap": "4.6.1",
+        "components/jquery": "^3.6",
+        "wdmg/bootstrap-wysiwyg-editor": "^1.1"
+    },
+	"config": {
+        "platform": {
+            "php": "7.4.21"
+         }
+   }
+	
+}
